@@ -1,0 +1,46 @@
+# Configuration for Fish Counting System
+
+# Video Processing Settings
+video:
+  frame_rate: 30  # Process every Nth frame
+  resize_width: 1280
+  resize_height: 720
+  
+# Detection Model Settings
+detection:
+  model_type: "yolov8"  # Options: yolov8, faster-rcnn, ssd
+  model_path: "models/fish_detector.pt"
+  confidence_threshold: 0.5
+  nms_threshold: 0.4
+  
+# Tracking Settings
+tracking:
+  max_disappeared: 50  # Max frames before considering fish lost
+  max_distance: 100  # Maximum distance for matching detections
+  track_history: 30  # Number of frames to keep in history
+  
+# Counting Settings
+counting:
+  # Define counting line coordinates (x1, y1, x2, y2)
+  counting_line:
+    enabled: true
+    x1: 640
+    y1: 0
+    x2: 640
+    y2: 720
+  # Direction definitions
+  direction_left: "downstream"
+  direction_right: "upstream"
+  
+# Output Settings
+output:
+  save_video: true
+  save_statistics: true
+  visualization: true
+  statistics_format: "csv"  # Options: csv, json, excel
+  
+# Performance Settings
+performance:
+  use_gpu: true
+  batch_size: 1
+  num_workers: 2

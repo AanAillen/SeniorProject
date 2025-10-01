@@ -1,0 +1,1 @@
+"""Fish counting package."""
