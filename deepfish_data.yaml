@@ -1,0 +1,14 @@
+path: /Users/tylercowles/Desktop/Tufts_CS/capstone/Deepfish/7117
+
+# 2. Paths to the training and validation image folders
+# These are relative to the 'path' above.
+# The 'ultralytics' library is smart and will find the
+# corresponding 'labels/train' and 'labels/valid' folders.
+train: train
+val: valid
+
+# 3. Class names (THE MOST IMPORTANT PART)
+# You MUST edit this to match your classes.
+# The index (0) must match the number in your .txt label files.
+names:
+  0: fish

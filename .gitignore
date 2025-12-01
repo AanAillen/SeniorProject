@@ -1,0 +1,24 @@
+# Directories
+classDocs/
+Deepfish/
+datasets/
+testVideos/
+runs/
+__pycache__/
+
+# Large files and archives
+*.zip
+*.pt
+*.cache
+
+# Output videos
+*.avi
+*.mp4
+*.mov
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
