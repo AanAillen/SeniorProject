@@ -2,8 +2,16 @@ import cv2
 
 from ultralytics import solutions
 
-cap = cv2.VideoCapture('testVideos/youtube_fish.mov')
+cap = cv2.VideoCapture('testVideos/aquarium2.mp4')
 assert cap.isOpened(), "Error reading video file"
+
+# Get output filename from user
+output_filename = input("Enter output video filename (without extension): ").strip()
+if not output_filename:
+    output_filename = "object_counting_output"
+# Ensure .mp4 extension
+if not output_filename.endswith(('.mp4', '.avi')):
+    output_filename += ".mp4"
 
 # Video writer
 w, h, fps = (int(cap.get(x)) for x in (cv2.CAP_PROP_FRAME_WIDTH, cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FPS))
@@ -25,15 +33,15 @@ region_points = [
 # region_points = [(20, 400), (1080, 400)]                                      # line counting
 # region_points = [(20, 400), (1080, 400), (1080, 360), (20, 360)]  # rectangular region
 # region_points = [(20, 400), (1080, 400), (1080, 360), (20, 360), (20, 400)]   # polygon region
-video_writer = cv2.VideoWriter("object_counting_output1.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
+video_writer = cv2.VideoWriter(output_filename, cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
 # Initialize object counter object
 counter = solutions.ObjectCounter(
     show=True,  # display the output
     region=region_points,  # pass region points
-    model='cfd-yolov12x-1.00.pt',  # model="yolo11n-obb.pt" for object counting with OBB model.
+    model='current_fish_model.pt',  # model="yolo11n-obb.pt" for object counting with OBB model.
     # classes=[0, 2],  # count specific classes, i.e., person and car with the COCO pretrained model.
-    # tracker="botsort.yaml",  # choose trackers i.e "bytetrack.yaml"
+    tracker="botsort.yaml",  # choose trackers i.e "bytetrack.yaml"
 )
 
 # Process video
