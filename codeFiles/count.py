@@ -2,7 +2,7 @@ import cv2
 
 from ultralytics import solutions
 
-cap = cv2.VideoCapture('testVideos/aquarium2.mp4')
+cap = cv2.VideoCapture('correction.mp4')
 assert cap.isOpened(), "Error reading video file"
 
 # Get output filename from user
@@ -22,7 +22,6 @@ box_top = 0  # start 10% from top
 box_bottom = int(h)  # end 10% from bottom
 center_x = w // 2
 left_x = center_x - box_width // 2 - 100
-right_x = center_x + box_width // 2 - 100
 
 # Vertical rectangular region (clockwise: top-left, top-right, bottom-right, bottom-left)
 region_points = [

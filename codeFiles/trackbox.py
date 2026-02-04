@@ -2,7 +2,7 @@ import cv2
 
 from ultralytics import solutions
 
-cap = cv2.VideoCapture("testVideos/shortClip.mp4")
+cap = cv2.VideoCapture("correction.mp4")
 assert cap.isOpened(), "Error reading video file"
 
 # Get output filename from user
