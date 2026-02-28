@@ -3,6 +3,11 @@ classDocs/
 Deepfish/
 datasets/
 testVideos/
+videoZip/
+outputVideos/
+processed_videos/
+roboflow/
+
 runs/
 __pycache__/
 
