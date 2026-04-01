@@ -1,8 +1,12 @@
 import cv2
+import sys
+import os
 
 from ultralytics import solutions
 
-cap = cv2.VideoCapture('processed_videos/barrel_fixed_shortClip_20260217_205047.mp4')
+in_file = sys.argv[1] if len(sys.argv) > 1 else 'processed_videos/barrel_fixed_shortClip_20260217_205047.mp4'
+assert os.path.exists(in_file), f"File not found: {in_file}"
+cap = cv2.VideoCapture(in_file)
 assert cap.isOpened(), "Error reading video file"
 
 # Get output filename from user
@@ -41,6 +45,7 @@ counter = solutions.ObjectCounter(
     model='current_fish_model.pt',  # model="yolo11n-obb.pt" for object counting with OBB model.
     # classes=[0, 2],  # count specific classes, i.e., person and car with the COCO pretrained model.
     tracker="botsort.yaml",  # choose trackers i.e "bytetrack.yaml"
+    conf=0.4,  # only count detections with >= 50% confidence
 )
 
 # Process video
