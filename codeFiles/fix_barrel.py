@@ -136,11 +136,15 @@ def get_output_path(input_path, prefix="barrel_fixed"):
 if __name__ == "__main__":
     # Handle arguments
     in_file = "testVideos/shortClip.mp4"
-    
+
     if len(sys.argv) > 1:
         in_file = sys.argv[1]
-        
-    # Auto-generate output path
-    out_file = get_output_path(in_file, prefix="barrel_fixed")
+
+    # Optional second argument lets callers (e.g. the GUI pipeline) specify
+    # an explicit output path; otherwise auto-generate a timestamped one.
+    if len(sys.argv) > 2:
+        out_file = sys.argv[2]
+    else:
+        out_file = get_output_path(in_file, prefix="barrel_fixed")
 
     process_video(in_file, out_file)

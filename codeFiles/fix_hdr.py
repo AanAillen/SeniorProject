@@ -144,7 +144,7 @@ def process_video(input_path, output_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 fix_hdr.py <input_video>")
+        print("Usage: python3 fix_hdr.py <input_video> [output_video]")
         sys.exit(1)
 
     in_file = sys.argv[1]
@@ -152,5 +152,11 @@ if __name__ == "__main__":
         print(f"Error: File '{in_file}' not found.")
         sys.exit(1)
 
-    out_file = get_output_path(in_file)
+    # Optional second argument lets callers (e.g. the GUI) specify the output path.
+    if len(sys.argv) >= 3:
+        out_file = sys.argv[2]
+        os.makedirs(os.path.dirname(os.path.abspath(out_file)), exist_ok=True)
+    else:
+        out_file = get_output_path(in_file)
+
     process_video(in_file, out_file)

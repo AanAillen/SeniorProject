@@ -7,6 +7,9 @@ videoZip/
 outputVideos/
 processed_videos/
 roboflow/
+GUI_processed_videos/
+groundTruthVids/
+oldModels/
 
 runs/
 __pycache__/
