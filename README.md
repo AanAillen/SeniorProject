@@ -29,7 +29,6 @@ python3 codeFiles/gui_app.py
 ```
 
 ### Using the application
-- 
 Once running the program a user can upload a '.mp4' video file to run the fish counting. The user will first
 run the pre-processing correction on the video and then run the fish detection and counting on the corrected
 video. The user can then adjust their model settings choosing the model of their choice and adjust the
